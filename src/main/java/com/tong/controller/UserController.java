@@ -3,7 +3,6 @@ package com.tong.controller;
 import com.tong.entity.ReData;
 import com.tong.entity.User;
 import com.tong.service.UserService;
-import com.tong.service.serviceImpl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class UserController {
     Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
     @RequestMapping(value = "/queryUserInfo",method = RequestMethod.POST)
     @ResponseBody

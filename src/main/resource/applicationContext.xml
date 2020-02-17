@@ -10,10 +10,12 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <import resource="spring-mybatis.xml"></import>
+    <import resource="classpath:spring-mybatis.xml"></import>
 
     <!-- 扫描 com.tong包下所有使⽤注解的类型 -->
-    <context:component-scan base-package="com.tong"/>
+    <context:component-scan base-package="com.tong.service">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+    </context:component-scan>
 
     <!-- 配置事务管理器 -->
     <bean id="transactionManager"
