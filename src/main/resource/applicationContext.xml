@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <import resource="spring-mybatis.xml"></import>
+
+    <!-- 扫描 com.tong包下所有使⽤注解的类型 -->
+    <context:component-scan base-package="com.tong"/>
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注⼊数据库连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 配置AOP通知 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!-- 配置事务属性 -->
+        <tx:attributes>
+            <!-- 添加事务管理的方法 -->
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="select*" propagation="REQUIRED" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 配置一个切面AOP -->
+    <!--<aop:config>-->
+        <!--<aop:aspect id="helloWorldAspect" ref="txAdvice">-->
+            <!--&lt;!&ndash; 配置切点 &ndash;&gt;-->
+            <!--<aop:pointcut id="pointcut" expression="execution(* com.aop.*.*(..))"/>-->
+            <!--&lt;!&ndash; 配置前置通知 &ndash;&gt;-->
+            <!--<aop:before pointcut-ref="pointcut" method="beforeAdvice"/>-->
+            <!--&lt;!&ndash; 配置前置通知 &ndash;&gt;-->
+            <!--<aop:after pointcut-ref="pointcut" method="afterAdvice"/>-->
+            <!--&lt;!&ndash; 配置后置返回通知 &ndash;&gt;-->
+            <!--<aop:after-returning pointcut-ref="pointcut" method="afterReturnAdvice" returning="result"/>-->
+            <!--&lt;!&ndash; 配置环绕通知 &ndash;&gt;-->
+            <!--<aop:around pointcut-ref="pointcut" method="aroundAdvice"/>-->
+            <!--&lt;!&ndash; 异常通知 &ndash;&gt;-->
+            <!--<aop:after-throwing pointcut-ref="pointcut" method="throwingAdvice" throwing="e"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <!-- 启用对事务注解的支持 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
