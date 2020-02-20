@@ -15,3 +15,7 @@ buildNumber.properties
 .idea/SpringStudy.iml
 .idea/inspectionProfiles/
 .idea/workspace.xml
+.idea/dataSources.local.xml
+src/main/java/tong/
+src/main/resource/sql/
+src/main/webapp/static/

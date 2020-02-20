@@ -10,11 +10,11 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <import resource="classpath:spring-mybatis.xml"></import>
+    <import resource="classpath:spring-mybatis.xml"/>
 
     <!-- 扫描 com.tong包下所有使⽤注解的类型 -->
-    <context:component-scan base-package="com.tong.service">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+    <context:component-scan base-package="tong">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <!-- 配置事务管理器 -->
@@ -24,17 +24,17 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!-- 配置AOP通知 -->
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <!-- 配置事务属性 -->
-        <tx:attributes>
-            <!-- 添加事务管理的方法 -->
-            <tx:method name="save*" propagation="REQUIRED"/>
-            <tx:method name="delete*" propagation="REQUIRED"/>
-            <tx:method name="update*" propagation="REQUIRED"/>
-            <tx:method name="select*" propagation="REQUIRED" read-only="true"/>
-        </tx:attributes>
-    </tx:advice>
+    <!--&lt;!&ndash; 配置AOP通知 &ndash;&gt;-->
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--&lt;!&ndash; 配置事务属性 &ndash;&gt;-->
+        <!--<tx:attributes>-->
+            <!--&lt;!&ndash; 添加事务管理的方法 &ndash;&gt;-->
+            <!--<tx:method name="save*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="delete*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="update*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="select*" propagation="REQUIRED" read-only="true"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
 
     <!-- 配置一个切面AOP -->
     <!--<aop:config>-->
@@ -55,5 +55,5 @@
     <!--</aop:config>-->
 
     <!-- 启用对事务注解的支持 -->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
 </beans>
