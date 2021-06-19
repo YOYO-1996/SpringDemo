@@ -6,6 +6,6 @@ package tong.exception;
  * @description：
  * @version: $
  */
-public class LoginException extends RuntimeException{
+public class LoginException extends RuntimeException {
 
 }

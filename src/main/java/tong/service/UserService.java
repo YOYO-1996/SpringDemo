@@ -1,9 +1,10 @@
 package tong.service;
 
-import tong.dao.UserMapper;
-import tong.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tong.dao.UserMapper;
+import tong.entity.User;
+
 
 /**
  * @author ：Tong

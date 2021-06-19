@@ -1,7 +1,7 @@
 package tong.entity;
 
 import lombok.Data;
-import org.springframework.stereotype.Repository;
+
 
 /**
  * @author ：Tong

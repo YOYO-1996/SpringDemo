@@ -4,12 +4,13 @@
 <mapper namespace="tong.dao.UserMapper">
 
     <select id="queryUserInfo" parameterType="string" resultType="User">
-        select pui_user_id userId,
-               pui_user_name userName,
-               pui_user_pwd accountPwd,
+        select pui_user_id     userId,
+               pui_user_name   userName,
+               pui_user_pwd    accountPwd,
                pui_user_mobile userMobile,
-               pui_user_stt userStt,
-               pui_user_role userRole
-        from pub_user_info where pui_user_mobile = #{userMobile}
+               pui_user_stt    userStt,
+               pui_user_role   userRole
+        from pub_user_info
+        where pui_user_mobile = #{userMobile}
     </select>
 </mapper>

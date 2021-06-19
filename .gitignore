@@ -12,7 +12,4 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 .gitignore
-.idea/SpringStudy.iml
-.idea/inspectionProfiles/
-.idea/workspace.xml
-.idea/dataSources.local.xml
+.idea/
